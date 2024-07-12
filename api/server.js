@@ -9,4 +9,4 @@ mongooseConnector();
 
 app.listen(env.app.port, async () => {
     console.log('Server running on http://localhost:' + env.app.port + '/');
-})
+});
