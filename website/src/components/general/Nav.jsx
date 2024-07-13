@@ -26,7 +26,7 @@ function Nav() {
                     <a href='/myrecipes' className="navbar-item">My Recipes</a>
                 </ul>
                 { loggedIn ? 
-                    <a onClick={() => { dispatch(logout()); navigate('/discover') }} className='login-button'>Logout</a>
+                    <a onClick={() => { dispatch(logout()); navigate('/discover') }} className='standard-button'>Logout</a>
                     :
                     <a onClick={() => navigate('/login')} className='standard-button'>Login</a>
                 }

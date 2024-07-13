@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
+    overflow-x: hidden;
 }
 
 a {
@@ -29,3 +30,35 @@ a {
     cursor: pointer;
     background-color: #F1D38A;
 }
+
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #EBE8E9;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #EBE8E9;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #E4E1E2;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #C0C0C0;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #9F9F9F;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #9F9F9F;
+  }
