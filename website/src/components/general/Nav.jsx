@@ -18,8 +18,6 @@ function Nav() {
                     <img src={cookpotLogo} alt="" className="logo" />
                     <span className="logo-text">cookpot</span>
                 </div>
-                <ul className="navbar-list">
-                </ul>
             </div>
             <div className="navbar-right">
                 <ul className="navbar-list">
@@ -30,7 +28,7 @@ function Nav() {
                 { loggedIn ? 
                     <a onClick={() => { dispatch(logout()); navigate('/discover') }} className='login-button'>Logout</a>
                     :
-                    <a onClick={() => navigate('/login')} className='login-button'>Login</a>
+                    <a onClick={() => navigate('/login')} className='standard-button'>Login</a>
                 }
             </div>
         </nav>

@@ -79,19 +79,3 @@
 .navbar-item:hover::after {
     width: 100%;
 }
-
-.login-button {
-    font-size: 1.2rem;
-    height: fit-content;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #F1AF59;
-    color: white;
-    transition: 200ms;
-}
-
-.login-button:hover {
-    cursor: pointer;
-    background-color: #F1D38A;
-}
