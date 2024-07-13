@@ -14,6 +14,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 5vw;
+
+    font-family: "Signika Negative", sans-serif;
 }
 
 .navbar-left, .navbar-right {
@@ -39,14 +41,12 @@
 }
 
 .logo-text {
-    font-family: "Signika Negative", sans-serif;
     font-weight: 600;
     font-size: 2.5rem;
 }
 
 .navbar-list {
     font-size: 1.2rem;
-    font-family: "Signika Negative", sans-serif;
     list-style: none;
     padding: 0;
     display: flex;
@@ -81,7 +81,6 @@
 }
 
 .login-button {
-    font-family: "Signika Negative", sans-serif;
     font-size: 1.2rem;
     height: fit-content;
     border: none;
