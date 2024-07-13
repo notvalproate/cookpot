@@ -1,14 +1,12 @@
 .recipe-displayer-container {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    row-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
 }
 
 .recipe-displayer-recipe {
-    width: 32%;
+    width: 100%;
     aspect-ratio: 1 / 0.8;
     overflow: hidden;
     box-sizing: border-box;
@@ -19,6 +17,7 @@
     flex-direction: column;
     row-gap: 10px;
     transition: 200ms;
+    color: #0D1007;
 }
 
 .recipe-displayer-recipe:hover {

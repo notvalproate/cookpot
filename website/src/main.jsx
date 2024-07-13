@@ -9,6 +9,7 @@ import './index.css';
 
 import Discover from './components/pages/discover/Discover';
 import Login from './components/pages/login/Login';
+import Search from './components/pages/search/Search';
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/search',
-        element: <div>Search</div>
+        element: <Search/>,
     },
     {
         path: '/myrecipes',

@@ -1,0 +1,32 @@
+.search-container {
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 30px 10vw 50px;
+}
+
+.search-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    width: 93%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    height: 40px;
+    border: none;
+    background-color: rgb(240, 240, 240);
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-button {
+    height: 40px;
+}
