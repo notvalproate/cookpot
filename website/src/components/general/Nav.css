@@ -1,0 +1,98 @@
+.navbar-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: white;
+    height: 100px;
+    box-shadow: 0px 0px 5px rgb(147, 147, 147);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+.navbar-left, .navbar-right {
+    height: 80%;
+    display: flex;
+    column-gap: 40px;
+}
+
+.navbar-right {
+    align-items: center;
+}
+
+.logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    user-select: none;
+}
+
+.logo {
+    height: 100%;
+}
+
+.logo-text {
+    font-family: "Signika Negative", sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.navbar-list {
+    font-size: 1.2rem;
+    font-family: "Signika Negative", sans-serif;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+}
+
+.navbar-item {
+    color: #0D1007;
+    position: relative;
+    transition: 200ms;
+}
+
+.navbar-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #F1AF59;
+    transition: 200ms ease-in-out;
+}
+
+.navbar-item:hover {
+    cursor: pointer;
+}
+
+.navbar-item:hover::after {
+    width: 100%;
+}
+
+.login-button {
+    font-family: "Signika Negative", sans-serif;
+    font-size: 1.2rem;
+    height: fit-content;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #F1AF59;
+    color: white;
+    transition: 200ms;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    background-color: #F1D38A;
+}

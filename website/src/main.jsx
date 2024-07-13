@@ -4,15 +4,25 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
 import './index.css';
 
+import Discover from './components/pages/discover/Discover';
+
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <div>Hello world!</div>,
-        errorElement: <div>Error</div>
+        element: <Discover/>,
+        errorElement: <div>Error 404</div>,
     },
     {
-        path: '/home',
-        element: <div>Home</div>
+        path: '/discover',
+        element: <Discover/>,
+    },
+    {
+        path: '/search',
+        element: <div>Search</div>
+    },
+    {
+        path: '/myrecipes',
+        element: <div>My Recipes</div>
     },
     {
         path: '/login',
