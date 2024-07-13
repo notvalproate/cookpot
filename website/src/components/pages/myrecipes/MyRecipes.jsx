@@ -53,6 +53,7 @@ function MyRecipes() {
     ];
 
     const [recipeName, setRecipeName] = useState('');
+    const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [instructions, setInstructions] = useState('');
     const [coverPhoto, setCoverPhoto] = useState(null);
@@ -63,6 +64,7 @@ function MyRecipes() {
 
         const formData = new FormData();
         formData.append('recipeName', recipeName);
+        formData.append('description', description);
         formData.append('ingredients', ingredients);
         formData.append('instructions', instructions);
         if(coverPhoto) {
@@ -71,7 +73,6 @@ function MyRecipes() {
             formData.append('coverPhoto', null);
         }
 
-        setSubmitted(true);
         try {
             const res = await fetch('http://localhost:4000/api/recipes', {
                 method: 'POST',
@@ -88,6 +89,7 @@ function MyRecipes() {
 
     function resetForm() {
         setRecipeName('');
+        setDescription('');
         setIngredients('');
         setInstructions('');
         setCoverPhoto(null);
@@ -118,6 +120,10 @@ function MyRecipes() {
                                     <div className="recipe-field">
                                         <label className="recipe-label">Recipe Name</label>
                                         <input type="text" className="recipe-input" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder="Recipe Name" required/>
+                                    </div>
+                                    <div className="recipe-field">
+                                        <label className="recipe-label">Description</label>
+                                        <textarea className="recipe-textarea recipe-desc" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" required/>
                                     </div>
                                     <div className="recipe-field">
                                         <label className="recipe-label">Ingredients</label>

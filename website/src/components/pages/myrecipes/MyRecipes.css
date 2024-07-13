@@ -122,6 +122,10 @@
     outline: none;
 }
 
+.recipe-desc {
+    height: 8vh;
+}
+
 .recipe-button {
     width: 100px;
 }
