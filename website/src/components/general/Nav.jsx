@@ -1,10 +1,16 @@
-import React from 'react'
-
+import cookpotLogo from '../../assets/cookpot.png';
 import './Nav.css';
 
-import cookpotLogo from '../../assets/cookpot.png';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../state/user/user.slice';
+
 
 function Nav() {
+    const loggedIn = useSelector(state => state.user.loggedIn);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     return (
         <nav className='navbar-container'>
             <div className="navbar-left">
@@ -21,7 +27,11 @@ function Nav() {
                     <a href='/search' className="navbar-item">Search</a>
                     <a href='/myrecipes' className="navbar-item">My Recipes</a>
                 </ul>
-                <a href='/login' className='login-button'>Login</a>
+                { loggedIn ? 
+                    <a onClick={() => { dispatch(logout()); navigate('/discover') }} className='login-button'>Logout</a>
+                    :
+                    <a onClick={() => navigate('/login')} className='login-button'>Login</a>
+                }
             </div>
         </nav>
     )
