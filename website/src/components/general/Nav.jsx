@@ -21,9 +21,9 @@ function Nav() {
             </div>
             <div className="navbar-right">
                 <ul className="navbar-list">
-                    <a href='/discover' className="navbar-item">Discover</a>
-                    <a href='/search' className="navbar-item">Search</a>
-                    <a href='/myrecipes' className="navbar-item">My Recipes</a>
+                    <a onClick={() => navigate('/discover')} className="navbar-item">Discover</a>
+                    <a onClick={() => navigate('/search')} className="navbar-item">Search</a>
+                    <a onClick={() => navigate('/myrecipes')} className="navbar-item">My Recipes</a>
                 </ul>
                 { loggedIn ? 
                     <a onClick={() => { dispatch(logout()); navigate('/discover') }} className='standard-button'>Logout</a>
