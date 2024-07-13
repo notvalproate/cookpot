@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cookpotLogo from '../../../assets/cookpot.png';
 import './Login.css';
 
 function Login() {
+    useEffect(() => {
+        document.title = "cookpot | Login"
+    }, [])
+
     const [signup, setSignup] = useState(true);
 
     function doLogin() {

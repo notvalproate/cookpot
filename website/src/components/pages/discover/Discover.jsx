@@ -2,8 +2,13 @@ import './Discover.css';
 
 import Nav from '../../general/Nav';
 import RecipeDisplayer from '../../general/RecipeDisplayer';
+import { useEffect } from 'react';
 
 function Discover() {
+    useEffect(() => {
+        document.title = "cookpot | Discover"
+    }, [])
+    
     const recipes = [
         {
             title: "Spaghetti",

@@ -34,7 +34,7 @@
 }
 
 .recipe-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
     transition: 200ms;
 }
@@ -44,5 +44,5 @@
 }
 
 .recipe-desc {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
