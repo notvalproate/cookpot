@@ -10,6 +10,7 @@ import './index.css';
 import Discover from './components/pages/discover/Discover';
 import Login from './components/pages/login/Login';
 import Search from './components/pages/search/Search';
+import MyRecipes from './components/pages/myrecipes/MyRecipes';
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/myrecipes',
-        element: <div>My Recipes</div>
+        element: <MyRecipes/>,
     },
     {
         path: '/login',

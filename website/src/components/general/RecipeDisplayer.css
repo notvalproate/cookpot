@@ -7,7 +7,7 @@
 
 .recipe-displayer-recipe {
     width: 100%;
-    aspect-ratio: 1 / 0.8;
+    aspect-ratio: 1 / 0.85;
     overflow: hidden;
     box-sizing: border-box;
     padding: 20px;

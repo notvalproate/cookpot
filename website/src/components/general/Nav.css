@@ -16,6 +16,8 @@
     padding: 0 5vw;
 
     font-family: "Signika Negative", sans-serif;
+
+    z-index: 999;
 }
 
 .navbar-left, .navbar-right {

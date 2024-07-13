@@ -1,0 +1,134 @@
+.myrecipes-container {
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 30px 10vw 50px;
+}
+
+.myrecipes {
+    width: 100%;
+    display: flex;
+    min-height: 50vh;
+}
+
+.myrecipes-left {
+    width: 15%;
+    padding: 30px 0;
+    margin: 0;
+    list-style: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: flex-end;
+    padding-right: 20px;
+}
+
+.myrecipes-left-item {
+    position: relative;
+    transition: 200ms ease-in-out;
+}
+
+.myrecipes-left-item:hover {
+    cursor: pointer;
+}
+
+.myrecipes-left-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #789051;
+    transition: 200ms ease-in-out;
+}
+
+.myrecipes-left-selected::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #789051;
+    transition: 200ms ease-in-out;
+}
+
+.myrecipes-left-item:hover::after {
+    width: 100%;
+}
+
+.divider {
+    width: 2px;
+    background-color: rgb(233, 233, 233);
+    margin-right: 20px;
+}
+
+.myrecipes-right {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.right-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.recipe-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-top: 20px;
+}
+
+.recipe-field {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.recipe-input {
+    width: 50%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+    padding-left: 10px;
+    font-size: 1.3rem;
+}
+
+.recipe-input:focus {
+    outline: none;
+}
+
+.recipe-textarea {
+    font-family: "Quicksand", sans-serif;
+    width: 70%;
+    height: 30vh;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    font-size: 1.1rem;
+    resize: none;
+}
+
+.recipe-textarea:focus {
+    outline: none;
+}
+
+.recipe-button {
+    width: 100px;
+}
+
+.recipe-made {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
