@@ -11,7 +11,7 @@ import multer from 'multer';
 const storage = multer.diskStorage({
     destination: 'images/',
     filename: function (req, file, callback) {
-        callback(null, `${Date.now()}${path.extname(file.originalname)}`);
+        callback(null, `${Date.now()}-${file.originalname}`);
     }
 });
 
