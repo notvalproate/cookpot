@@ -38,6 +38,10 @@
     transition: 200ms;
 }
 
+.recipe-by {
+    text-decoration: underline;
+}
+
 .recipe-displayer-recipe:hover .recipe-title {
     color: #789051;
 }

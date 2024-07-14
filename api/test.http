@@ -26,10 +26,10 @@ POST http://localhost:4000/recipe/
 Content-Type: application/json
 
 {
-    "recipeName": "Spaghetti 2",
-    "description": "Nice noodlies",
-    "ingredients": "Spaget 2",
-    "instructions": "Cook the spaget"
+    "recipeName": "Chutney",
+    "description": "Nice Chutney",
+    "ingredients": "Coco",
+    "instructions": "Nut"
 }
 
 ###

@@ -2,6 +2,7 @@ import './RecipeDisplayer.css';
 
 function RecipeDisplayer(props) {
     const recipes = props.recipes;
+    const defaultCoverPhoto = "http://localhost:4000/images/cover-placeholder.jpg";
 
     return (
         <>
@@ -9,8 +10,9 @@ function RecipeDisplayer(props) {
                 {recipes.map((recipe, index) => {
                     return (
                         <a key={index} href={recipe.recipeUrl} className="recipe-displayer-recipe">
-                            <img src={recipe.imgUrl} alt={recipe.title} className="recipe-banner"/>
-                            <span className="recipe-title">{recipe.title}</span>
+                            <img src={recipe.coverPhoto || defaultCoverPhoto} alt={recipe.recipeName} className="recipe-banner"/>
+                            <span className="recipe-title">{recipe.recipeName}</span>
+                            <span className="recipe-by">By {recipe.createdBy}</span>
                             <span className="recipe-desc">{recipe.description}</span>
                         </a>
                     )

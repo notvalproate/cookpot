@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import env from './utils/environment.js';
 import mongooseConnector from './db/mongo.connector.js';
@@ -12,6 +13,12 @@ mongooseConnector();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+    cors({
+        origin: env.app.client,
+        credentials: true,
+    })
+);
 app.use(cookieParser());
 app.use('/images', express.static('images'));
 

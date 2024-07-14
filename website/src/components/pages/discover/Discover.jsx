@@ -2,39 +2,24 @@ import './Discover.css';
 
 import Nav from '../../general/Nav';
 import RecipeDisplayer from '../../general/RecipeDisplayer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import axios from 'axios';
 
 function Discover() {
+    const [recipes, setRecipes] = useState([]);
+
     useEffect(() => {
         document.title = "cookpot | Discover"
+
+        const loadRecipes = async () => {
+            const res = await axios.get("http://localhost:4000/recipe/discover");
+
+            setRecipes(res.data);
+        }
+
+        loadRecipes();
     }, [])
-    
-    const recipes = [
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-    ]
     
     return (
         <>
