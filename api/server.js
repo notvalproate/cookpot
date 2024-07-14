@@ -13,6 +13,7 @@ mongooseConnector();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static('images'));
 
 import authRoutes from './routes/auth.routes.js';
 import recipeRoutes from './routes/recipe.routes.js';

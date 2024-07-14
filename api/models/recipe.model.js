@@ -21,6 +21,9 @@ const recipeSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    coverPhoto: {
+        type: String,
+    },
 });
 
 export default mongoose.model("recipes", recipeSchema);

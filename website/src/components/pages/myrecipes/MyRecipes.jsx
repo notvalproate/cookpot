@@ -69,8 +69,6 @@ function MyRecipes() {
         formData.append('instructions', instructions);
         if(coverPhoto) {
             formData.append('coverPhoto', coverPhoto);
-        } else {
-            formData.append('coverPhoto', null);
         }
 
         try {

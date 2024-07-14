@@ -5,6 +5,7 @@ import Recipe from '../models/recipe.model.js';
 
 class RecipeHandler {
     static MAX_DISCOVER_RECIPES = 30;
+    static IMAGE_BASE_URL = "http://localhost:4000/images/";
 
     static createRecipe = asyncHandler(async (req, res) => {
         const createdBy = req.user.username;
@@ -18,12 +19,18 @@ class RecipeHandler {
         }
 
         const recipeExists = await Recipe.findOne({ 
-            createdBy: createdBy, 
+            createdBy: createdBy,
             recipeName: recipeName,
         });
 
         if(recipeExists) {
             throw new ApiError(400, 'Recipe already exists');
+        }
+
+        let coverPhoto = null;
+
+        if(req.file) {
+            coverPhoto = this.IMAGE_BASE_URL + req.file.filename;
         }
 
         const recipe = new Recipe({
@@ -32,6 +39,7 @@ class RecipeHandler {
             description: description,
             ingredients: ingredients,
             instructions: instructions,
+            coverPhoto: coverPhoto,
         });
         await recipe.save();
 
