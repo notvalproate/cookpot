@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider, } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './state/store.js';
 
@@ -11,6 +11,7 @@ import Discover from './components/pages/discover/Discover';
 import Login from './components/pages/login/Login';
 import Search from './components/pages/search/Search';
 import MyRecipes from './components/pages/myrecipes/MyRecipes';
+import Recipe from './components/pages/recipe/Recipe';
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
     {
         path: '/myrecipes',
         element: <MyRecipes/>,
+    },
+    {
+        path: '/recipe',
+        element: <Navigate to="/discover" replace={true}/>,
+    },
+    {
+        path: '/recipe/:id',
+        element: <Recipe/>,
     },
     {
         path: '/login',

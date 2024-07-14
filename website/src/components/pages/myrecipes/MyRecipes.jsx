@@ -116,7 +116,7 @@ function MyRecipes() {
                                         <textarea className="recipe-textarea" value={instructions} onChange={(e) => setInstructions(e.target.value)}  placeholder="Instructions" required/>
                                     </div>
                                     <div className="recipe-field">
-                                        <label className="recipe-label">Cover Photo</label>
+                                        <label className="recipe-label">Cover Photo (Optional)</label>
                                         <input type="file" className="recipe-input" onChange={(e) => setCoverPhoto(e.target.files[0])} />
                                     </div>
                                     <button className="standard-button recipe-button" type="submit">Create</button>

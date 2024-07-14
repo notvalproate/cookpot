@@ -42,7 +42,7 @@ GET http://localhost:4000/recipe/discover
 
 ###
 
-GET http://localhost:4000/recipe/search?q=Spaghetti
+GET http://localhost:4000/recipe/search?q=fried
 
 ###
 
