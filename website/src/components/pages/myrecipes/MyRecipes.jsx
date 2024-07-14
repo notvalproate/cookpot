@@ -26,6 +26,7 @@ function MyRecipes() {
 
     useEffect(() => {
         document.title = "cookpot | My Recipes"
+        
         if(!loggedIn) {
             navigate('/login');
         }

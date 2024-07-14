@@ -30,7 +30,7 @@ class AuthHandler {
 
         const token = jwt.sign({ username: username }, env.jwt.secret, { expiresIn: env.jwt.expiry });
 
-        res.cookie('authToken', token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 7 * 4 * 3 });
+        res.cookie('authToken', token, { maxAge: 1000 * 60 * 60 * 24 * 7 * 4 * 3 });
 
         res.status(201).json({ message: 'User created', username: username });
     });
@@ -57,13 +57,13 @@ class AuthHandler {
 
         const token = jwt.sign({ username: username }, env.jwt.secret, { expiresIn: env.jwt.expiry });
 
-        res.cookie('authToken', token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 7 * 4 * 3 });
+        res.cookie('authToken', token, { maxAge: 1000 * 60 * 60 * 24 * 7 * 4 * 3 });
 
         res.status(200).json({ message: 'Login successful', username: username });
     });
 
     static logout = asyncHandler(async (req, res) => {
-        res.clearCookie('authToken', { httpOnly: true });
+        res.clearCookie('authToken');
 
         res.status(204).send();
     });
