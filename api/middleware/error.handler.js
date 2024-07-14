@@ -10,6 +10,8 @@ const errorHandler = (err, req, res, next) => {
         message: errMsg,
     };
 
+    console.log(err);
+
     res.status(errStatus).json(error);
 };
 
