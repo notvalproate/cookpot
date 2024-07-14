@@ -9,7 +9,7 @@ const router = express.Router();
 import multer from 'multer';
 
 const storage = multer.diskStorage({
-    destination: '../images/',
+    destination: 'images/',
     filename: function (req, file, callback) {
         callback(null, `${Date.now()}${path.extname(file.originalname)}`);
     }
