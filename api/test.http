@@ -18,3 +18,8 @@ Content-Type: application/json
 
 ###
 
+DELETE http://localhost:4000/auth/logout
+
+###
+
+GET http://localhost:4000/recipe/
