@@ -4,42 +4,28 @@ import Nav from '../../general/Nav';
 import RecipeDisplayer from '../../general/RecipeDisplayer';
 import { useEffect, useState } from 'react';
 
+import axios from 'axios';
+
 function Search() {
     useEffect(() => {
         document.title = "cookpot | Search"
     }, [])
 
+    const [searchQuery, setSearchQuery] = useState("");
     const [recipes, setRecipes] = useState([]);
 
-    function getSearchResults() {
-        const recipesTest = [
-            {
-                title: "Spaghetti",
-                description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-                imgUrl: "spaget.jpg",
-                recipeUrl: "/recipe?id=1"
-            },
-            {
-                title: "Spaghetti",
-                description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-                imgUrl: "spaget.jpg",
-                recipeUrl: "/recipe?id=1"
-            },
-            {
-                title: "Spaghetti",
-                description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-                imgUrl: "spaget.jpg",
-                recipeUrl: "/recipe?id=1"
-            },
-            {
-                title: "Spaghetti",
-                description: "Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-                imgUrl: "spaget.jpg",
-                recipeUrl: "/recipe?id=1"
-            },
-        ];
+    async function getSearchResults() {
+        const q = searchQuery.trim();
 
-        setRecipes(recipesTest);
+        if(q === "") return;
+
+        const params = new URLSearchParams({
+            q: q,
+        });
+
+        const recipes = await axios.get("http://localhost:4000/recipe/search?" + params.toString());
+
+        setRecipes(recipes.data);
     }
 
     return (
@@ -47,7 +33,7 @@ function Search() {
             <Nav/>
             <div className="search-container">
                 <div className="search-box">
-                    <input type="text" className="search-input" placeholder="Search for recipes..."/>
+                    <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="search-input" placeholder="Search for recipes..."/>
                     <button className="standard-button search-button" onClick={getSearchResults}>Search</button>
                 </div>
                 { recipes.length === 0 ? 
