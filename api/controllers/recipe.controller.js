@@ -46,6 +46,22 @@ class RecipeHandler {
         res.status(200).json(recipes);
     });
 
+    static getRecipeById = asyncHandler(async (req, res) => {
+        const id = req.params.id;
+
+        if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+            throw new ApiError(400, 'Invalid recipe ID');
+        }
+
+        const recipe = await Recipe.findById(id);
+
+        if(!recipe) {
+            throw new ApiError(404, 'Recipe not found');
+        }
+
+        res.status(200).json(recipe);
+    });
+
     static discoverRecipes = asyncHandler(async (req, res) => {
         const recipeCount = await Recipe.countDocuments();
 
@@ -54,6 +70,18 @@ class RecipeHandler {
         }
 
         const recipes = await Recipe.aggregate([{ $sample: { size: this.MAX_DISCOVER_RECIPES } }]);
+
+        res.status(200).json(recipes);
+    });
+
+    static searchRecipes = asyncHandler(async (req, res) => {
+        const searchTerm = req.query.q;
+
+        if(!searchTerm) {
+            throw new ApiError(400, 'Search term is required');
+        }
+
+        const recipes = await Recipe.find({ recipeName: { $regex: searchTerm, $options: 'i' } });
 
         res.status(200).json(recipes);
     });

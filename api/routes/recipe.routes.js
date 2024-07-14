@@ -5,10 +5,10 @@ import RecipeHandler from '../controllers/recipe.controller.js';
 
 const router = express.Router();
 
-router.use(authMiddleware);
-
-router.get('/', RecipeHandler.getRecipes);
-router.post('/', RecipeHandler.createRecipe);
+router.get('/', authMiddleware, RecipeHandler.getRecipes);
+router.get('/id/:id', RecipeHandler.getRecipeById);
+router.post('/', authMiddleware, RecipeHandler.createRecipe);
 router.get('/discover', RecipeHandler.discoverRecipes);
+router.get('/search', RecipeHandler.searchRecipes);
 
 export default router;
