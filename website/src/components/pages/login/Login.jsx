@@ -24,6 +24,8 @@ function Login() {
     const [signupPassword, setSignupPassword] = useState("");
     const [signupCPassword, setSignupCPassword] = useState("");
 
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+
     async function doLogin(e) {
         e.preventDefault();
 
@@ -45,6 +47,11 @@ function Login() {
 
     async function doSignin(e) {
         e.preventDefault();
+
+        if(!passwordRegex.test(signupPassword)) {
+            alert("Password must contain a Number, a Capital letter, and Symbol! Length: 6 - 16 Characters")
+            return;
+        }
 
         if(signupPassword !== signupCPassword) {
             alert("Passwords do not match");
