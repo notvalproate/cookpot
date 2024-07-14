@@ -14,7 +14,9 @@ function Search() {
     const [searchQuery, setSearchQuery] = useState("");
     const [recipes, setRecipes] = useState([]);
 
-    async function getSearchResults() {
+    async function getSearchResults(e) {
+        e.preventDefault();
+
         const q = searchQuery.trim();
 
         if(q === "") return;
@@ -32,10 +34,10 @@ function Search() {
         <>
             <Nav/>
             <div className="search-container">
-                <div className="search-box">
+                <form className="search-box" onSubmit={getSearchResults}>
                     <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="search-input" placeholder="Search for recipes..."/>
-                    <button className="standard-button search-button" onClick={getSearchResults}>Search</button>
-                </div>
+                    <button className="standard-button search-button" type="submit">Search</button>
+                </form>
                 { recipes.length === 0 ? 
                     <h1>No results</h1> 
                     :

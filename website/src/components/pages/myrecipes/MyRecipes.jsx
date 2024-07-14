@@ -26,7 +26,7 @@ function MyRecipes() {
 
     useEffect(() => {
         document.title = "cookpot | My Recipes"
-        
+
         if(!loggedIn) {
             navigate('/login');
         }
@@ -34,17 +34,27 @@ function MyRecipes() {
         getRecipes();
     }, []);
 
-    async function goToMyRecipes() {
-        await getRecipes();
-        setCreate(false);
-    }
-
     const [recipeName, setRecipeName] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [instructions, setInstructions] = useState('');
     const [coverPhoto, setCoverPhoto] = useState(null);
     const [submitted, setSubmitted] = useState(false);
+
+    function resetForm() {
+        setRecipeName('');
+        setDescription('');
+        setIngredients('');
+        setInstructions('');
+        setCoverPhoto(null);
+        setSubmitted(false);
+    }
+    
+    async function goToMyRecipes() {
+        await getRecipes();
+        setCreate(false);
+        resetForm();
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -58,27 +68,14 @@ function MyRecipes() {
             formData.append('coverPhoto', coverPhoto);
         }
 
-        try {
-            const res = await fetch('http://localhost:4000/api/recipes', {
-                method: 'POST',
-                body: formData,
-            });
+        const res = await axios.post('http://localhost:4000/recipe', formData, {
+            withCredentials: true,
+            validateStatus: status => status >= 200 && status <= 500
+        });
 
-            if(res.ok) {
-                setSubmitted(true);
-            }
-        } catch (error) {
-            console.log(error);
+        if(res.status === 201) {
+            setSubmitted(true);
         }
-    }
-
-    function resetForm() {
-        setRecipeName('');
-        setDescription('');
-        setIngredients('');
-        setInstructions('');
-        setCoverPhoto(null);
-        setSubmitted(false);
     }
 
     return (
