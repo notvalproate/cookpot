@@ -14,6 +14,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+import authRoutes from './routes/auth.routes.js';
+import recipeRoutes from './routes/recipe.routes.js';
+
+app.use('/auth', authRoutes);
+app.use('/recipe', recipeRoutes);
 
 app.use(errorHandler);
 

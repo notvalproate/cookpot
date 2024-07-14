@@ -4,7 +4,9 @@ import env from '../utils/environment.js';
 
 export default async function mongooseConnector() {
     mongoose
-        .connect(env.mongo.uri)
+        .connect(env.mongo.uri, {
+            dbName: 'cookpot',
+        })
         .then(() => {
             console.log('Connected to MongoDB');
         })
