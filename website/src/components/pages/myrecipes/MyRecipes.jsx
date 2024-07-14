@@ -6,51 +6,37 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import axios from 'axios';
+
 function MyRecipes() {
     const loggedIn = useSelector(state => state.user.loggedIn);
     const navigate = useNavigate();
+
+    const [create, setCreate] = useState(false);
+    const [recipes, setRecipes] = useState([]);
+
+    async function getRecipes() {
+        const res = await axios.get('http://localhost:4000/recipe', {
+            withCredentials: true,
+            validateStatus: status => status >= 200 && status <= 500
+        });
+
+        setRecipes(res.data);
+    }
 
     useEffect(() => {
         document.title = "cookpot | My Recipes"
         if(!loggedIn) {
             navigate('/login');
         }
+
+        getRecipes();
     }, []);
 
-    const [create, setCreate] = useState(false);
-
-    const recipes = [
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-        {
-            title: "Spaghetti",
-            description: "Nais pasta dish dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish Nais pasta dish ",
-            imgUrl: "spaget.jpg",
-            recipeUrl: "/recipe?id=1"
-        },
-    ];
+    async function goToMyRecipes() {
+        await getRecipes();
+        setCreate(false);
+    }
 
     const [recipeName, setRecipeName] = useState('');
     const [description, setDescription] = useState('');
@@ -100,7 +86,7 @@ function MyRecipes() {
             <div className="myrecipes-container">
                 <div className="myrecipes">
                     <ul className="myrecipes-left">
-                        <li className={`myrecipes-left-item ${create ? '' : 'myrecipes-left-selected'}`} onClick={() => setCreate(false)}>My Recipes</li>
+                        <li className={`myrecipes-left-item ${create ? '' : 'myrecipes-left-selected'}`} onClick={async () => await goToMyRecipes()}>My Recipes</li>
                         <li className={`myrecipes-left-item ${create ? 'myrecipes-left-selected' : ''}`} onClick={() => setCreate(true)}>Create Recipe</li>
                     </ul>
                     <div className="divider"></div>
