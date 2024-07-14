@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { createBrowserRouter, Navigate, RouterProvider, } from 'react-router-dom';
+import {
+    createBrowserRouter,
+    Navigate,
+    RouterProvider,
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './state/store.js';
 
@@ -16,41 +20,41 @@ import Recipe from './components/pages/recipe/Recipe';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Discover/>,
+        element: <Discover />,
         errorElement: <div>Error 404</div>,
     },
     {
         path: '/discover',
-        element: <Discover/>,
+        element: <Discover />,
     },
     {
         path: '/search',
-        element: <Search/>,
+        element: <Search />,
     },
     {
         path: '/myrecipes',
-        element: <MyRecipes/>,
+        element: <MyRecipes />,
     },
     {
         path: '/recipe',
-        element: <Navigate to="/discover" replace={true}/>,
+        element: <Navigate to="/discover" replace={true} />,
     },
     {
         path: '/recipe/:id',
-        element: <Recipe/>,
+        element: <Recipe />,
     },
     {
         path: '/login',
-        element: <Login/>
+        element: <Login />,
     },
     {
         path: '/**',
-        element: <div>Not Found</div>
-    }
+        element: <div>Not Found</div>,
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
     </Provider>
 );

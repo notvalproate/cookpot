@@ -15,12 +15,13 @@
     align-items: center;
     padding: 0 5vw;
 
-    font-family: "Signika Negative", sans-serif;
+    font-family: 'Signika Negative', sans-serif;
 
     z-index: 999;
 }
 
-.navbar-left, .navbar-right {
+.navbar-left,
+.navbar-right {
     height: 80%;
     display: flex;
     column-gap: 40px;
@@ -58,19 +59,19 @@
 }
 
 .navbar-item {
-    color: #0D1007;
+    color: #0d1007;
     position: relative;
     transition: 200ms;
 }
 
 .navbar-item::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0%;
     height: 3px;
-    background-color: #F1AF59;
+    background-color: #f1af59;
     transition: 200ms ease-in-out;
 }
 

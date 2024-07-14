@@ -1,8 +1,8 @@
-import asyncHandler from "express-async-handler";
+import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 
-import ApiError from "../utils/api.error.js";
-import env from "../utils/environment.js";
+import ApiError from '../utils/api.error.js';
+import env from '../utils/environment.js';
 
 const authMiddleware = asyncHandler((req, res, next) => {
     const token = req.cookies.authToken;

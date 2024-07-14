@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const recipeSchema = new mongoose.Schema({
     createdBy: {
@@ -26,4 +26,4 @@ const recipeSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model("recipes", recipeSchema);
+export default mongoose.model('recipes', recipeSchema);

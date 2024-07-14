@@ -16,7 +16,7 @@
     flex-direction: column;
     row-gap: 10px;
     transition: 200ms;
-    color: #0D1007;
+    color: #0d1007;
 }
 
 .recipe-displayer-recipe:hover {

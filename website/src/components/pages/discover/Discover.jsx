@@ -10,26 +10,28 @@ function Discover() {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        document.title = "cookpot | Discover"
+        document.title = 'cookpot | Discover';
 
         const loadRecipes = async () => {
-            const res = await axios.get("http://localhost:4000/recipe/discover");
+            const res = await axios.get(
+                'http://localhost:4000/recipe/discover'
+            );
 
             setRecipes(res.data);
-        }
+        };
 
         loadRecipes();
-    }, [])
-    
+    }, []);
+
     return (
         <>
-            <Nav/>
+            <Nav />
             <div className="discover-container">
                 <h1>Discover New Recipes!</h1>
-                <RecipeDisplayer recipes={recipes}/>
+                <RecipeDisplayer recipes={recipes} />
             </div>
         </>
-    )
+    );
 }
 
 export default Discover;

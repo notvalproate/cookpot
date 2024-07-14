@@ -1,11 +1,11 @@
-import asyncHandler from "express-async-handler";
+import asyncHandler from 'express-async-handler';
 
-import ApiError from "../utils/api.error.js";
+import ApiError from '../utils/api.error.js';
 import Recipe from '../models/recipe.model.js';
 
 class RecipeHandler {
     static MAX_DISCOVER_RECIPES = 30;
-    static IMAGE_BASE_URL = "http://localhost:4000/images/";
+    static IMAGE_BASE_URL = 'http://localhost:4000/images/';
 
     static createRecipe = asyncHandler(async (req, res) => {
         const createdBy = req.user.username;
@@ -14,22 +14,22 @@ class RecipeHandler {
         const ingredients = req.body.ingredients;
         const instructions = req.body.instructions;
 
-        if(!recipeName || !description || !ingredients || !instructions) {
+        if (!recipeName || !description || !ingredients || !instructions) {
             throw new ApiError(400, 'All fields are required');
         }
 
-        const recipeExists = await Recipe.findOne({ 
+        const recipeExists = await Recipe.findOne({
             createdBy: createdBy,
             recipeName: recipeName,
         });
 
-        if(recipeExists) {
+        if (recipeExists) {
             throw new ApiError(400, 'Recipe already exists');
         }
 
         let coverPhoto = null;
 
-        if(req.file) {
+        if (req.file) {
             coverPhoto = this.IMAGE_BASE_URL + req.file.filename;
         }
 
@@ -63,7 +63,7 @@ class RecipeHandler {
 
         const recipe = await Recipe.findById(id);
 
-        if(!recipe) {
+        if (!recipe) {
             throw new ApiError(404, 'Recipe not found');
         }
 
@@ -73,11 +73,13 @@ class RecipeHandler {
     static discoverRecipes = asyncHandler(async (req, res) => {
         const recipeCount = await Recipe.countDocuments();
 
-        if(recipeCount === 0) {
+        if (recipeCount === 0) {
             throw new ApiError(404, 'No recipes found');
         }
 
-        const recipes = await Recipe.aggregate([{ $sample: { size: this.MAX_DISCOVER_RECIPES } }]);
+        const recipes = await Recipe.aggregate([
+            { $sample: { size: this.MAX_DISCOVER_RECIPES } },
+        ]);
 
         res.status(200).json(recipes);
     });
@@ -85,15 +87,17 @@ class RecipeHandler {
     static searchRecipes = asyncHandler(async (req, res) => {
         const searchTerm = req.query.q;
 
-        if(!searchTerm) {
+        if (!searchTerm) {
             throw new ApiError(400, 'Search term is required');
         }
 
-        const recipes = await Recipe.find({ recipeName: { $regex: searchTerm, $options: 'i' } });
+        const recipes = await Recipe.find({
+            recipeName: { $regex: searchTerm, $options: 'i' },
+        });
 
         res.status(200).json(recipes);
     });
-};
+}
 
 Object.freeze(RecipeHandler);
 
