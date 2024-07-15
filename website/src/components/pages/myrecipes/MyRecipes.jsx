@@ -51,9 +51,9 @@ function MyRecipes() {
     }
 
     async function goToMyRecipes() {
-        await getRecipes();
         setCreate(false);
         resetForm();
+        await getRecipes();
     }
 
     async function handleSubmit(e) {
